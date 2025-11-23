@@ -1,0 +1,12 @@
+# this file matches the toolchain.cmake file produced by Vitis
+set (CMAKE_SYSTEM_PROCESSOR "arm" CACHE STRING "")
+set (MACHINE "zynqmp_r5")
+set (CROSS_PREFIX "armr5-none-eabi-" CACHE STRING "")
+set (CMAKE_C_FLAGS "-O2 -c -mcpu=cortex-r5 -g -DARMR5 -Wall -Wextra -mfloat-abi=hard -mfpu=vfpv3-d16 -fno-tree-loop-distribute-patterns -I/home/serrano/projects/twt/microblaze/zcu102/twt-mb-study/vitis/system/psu_cortexr5_0/freertos10_xilinx_psu_cortexr5_0/bsp/psu_cortexr5_0/include" CACHE STRING "")
+set (CMAKE_SYSTEM_NAME "FreeRTOS" CACHE STRING "")
+include (CMakeForceCompiler)
+CMAKE_FORCE_C_COMPILER ("${CROSS_PREFIX}gcc" GNU)
+CMAKE_FORCE_CXX_COMPILER ("${CROSS_PREFIX}g++" GNU)
+set (CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER CACHE STRING "")
+set (CMAKE_FIND_ROOT_PATH_MODE_LIBRARY NEVER CACHE STRING "")
+set (CMAKE_FIND_ROOT_PATH_MODE_INCLUDE NEVER CACHE STRING "")
