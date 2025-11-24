@@ -14,10 +14,15 @@ include (collect)
 include (options)
 include (depends)
 
+# point to vitis-generated includes
+set(CMAKE_INCLUDE_PATH "${CMAKE_SOURCE_DIR}/../../../../../../vitis/mb_system/microblaze_0/standalone_microblaze_0/bsp/microblaze_0/include")
+message("MACHINE:            ${MACHINE}")
+message("CMAKE_SOURCE_DIR:   ${CMAKE_SOURCE_DIR}")
+message("CMAKE_INCLUDE_PATH: ${CMAKE_INCLUDE_PATH}")
 foreach(_inc_path ${CMAKE_INCLUDE_PATH})
   collect (PROJECT_INC_DIRS "${_inc_path}")
 endforeach()
-
+message("PROJECT_INC_DIRS: ${PROJECT_INC_DIRS}")
 enable_testing ()
 
 add_subdirectory (lib)
