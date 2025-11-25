@@ -4,8 +4,7 @@ set (MACHINE "zynqmp_r5")
 set (CROSS_PREFIX "armr5-none-eabi-" CACHE STRING "")
 
 # point to vitis-generated includes
-set(CMAKE_INCLUDE_PATH "${CMAKE_SOURCE_DIR}/../../../../../../vitis/system/psu_cortexr5_0/freertos10_xilinx_psu_cortexr5_0/bsp/psu_cortexr5_0/include/")
-
+set(CMAKE_INCLUDE_PATH "${CMAKE_SOURCE_DIR}/../../../../../../vitis/mb_rtos_system/export/mb_rtos_system/sw/mb_rtos_system/psu_cortexr5_0/bspinclude/include/")
 message("CMAKE_SOURCE_DIR:    ${CMAKE_SOURCE_DIR}")
 message("CMAKE_INCLUDE_PATH:  ${CMAKE_INCLUDE_PATH}")
 set (CMAKE_C_FLAGS "-O2 -c \

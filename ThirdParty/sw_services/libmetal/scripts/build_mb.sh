@@ -3,17 +3,26 @@
 # builds the MicroBlaze version of libmetal library
 set -e
 
-if [[ -d "../build_mb" ]]; then
-	pushd ../build_mb
-	rm -rf *
-else
-	mkdir ../build_mb
-	pushd ../build_mb
-fi
+# destination for the library and include files
+DEST="../../../../../vitis/ext_lib/mb/libmetal"
+BUILD="../build_mb/"
 
-cmake ../src/libmetal/ -DCMAKE_TOOLCHAIN_FILE="../src/libmetal/cmake/platforms/toolchain_mb.cmake" \
+# clean any existing files
+rm -rf $BUILD
+rm -rf $DEST
+
+mkdir -p $BUILD
+mkdir -p $DEST
+
+pushd $BUILD
+cmake ../src/libmetal/ \
+ -DCMAKE_TOOLCHAIN_FILE="../src/libmetal/cmake/platforms/toolchain_mb.cmake" \
  -DWITH_DOC=off -DWITH_DEFAULT_LOGGER=off
-
-make metal-static
-
 popd
+
+make VERBOSE=1 -C $BUILD metal-static
+
+# copy includes and built library
+mkdir -p $DEST/include/
+cp -R ../build_mb/lib/include/metal $DEST/include/
+cp ../build_mb/lib/libmetal.a $DEST
